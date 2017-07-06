@@ -1,0 +1,4 @@
+.vagrant
+SOURCES/*.zip
+SOURCES/*.tar.gz
+artifacts/*.rpm
