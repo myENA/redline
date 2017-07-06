@@ -1,0 +1,1 @@
+Icon taken from emojidex https://www.emojidex.com/emoji/tachometer.

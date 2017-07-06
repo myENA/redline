@@ -1,4 +1,4 @@
-# ![tachometer](https://cdn.emojidex.com/emoji/seal/tachometer.png "tachometer") Redline
+# ![tachometer](icon/tachometer.png "tachometer") Redline
 
 This project provides a simple framework for building RPMs under Docker and/or Vagrant.
 
