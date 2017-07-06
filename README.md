@@ -1,6 +1,8 @@
-# ![tachometer](https://cdn.emojidex.com/emoji/seal/tachometer.png "tachometer") Readline is a simple framework for building RPMs under Docker and/or Vagrant.
+# ![tachometer](https://cdn.emojidex.com/emoji/seal/tachometer.png "tachometer") Redline
 
-Place your RPM spec files in the `SPECS` directory and all local sources (sources that can't be downloaded via spectool) in the `SOURCES` directory.  Then just build as described below.
+This project provides a simple framework for building RPMs under Docker and/or Vagrant.
+
+Simply place your RPM spec files in the `SPECS` directory and all local sources (sources that can't be downloaded via spectool) in the `SOURCES` directory.  Build as described below.
 
 # Building
 
