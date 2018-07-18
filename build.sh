@@ -21,6 +21,9 @@ for spec in $HOME/rpmbuild/SPECS/*.spec; do
     spectool -g -R $spec
 done
 
+## install build dependencies
+sudo yum-builddep -y $HOME/rpmbuild/SPECS/*.spec
+
 ## build packages
 rpmbuild -ba $HOME/rpmbuild/SPECS/*.spec
 
