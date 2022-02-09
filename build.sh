@@ -5,7 +5,12 @@ set -ex  ## we like things verbose
 sudo yum groupinstall -y "Development Tools"
 
 ## install other helpers
-sudo yum install -y epel-release mock rpmdevtools rpm-devel
+sudo yum install -y epel-release
+
+sudo dnf config-manager --set-enabled powertools
+
+sudo yum upgrade -y
+sudo yum install -y mock rpmdevtools rpm-devel
 
 ## setup our build path
 rpmdev-setuptree
@@ -14,7 +19,9 @@ rpmdev-setuptree
 ln -sf /tmp/build/SPECS/*.spec $HOME/rpmbuild/SPECS/
 
 ## link the sources
-find /tmp/build/SOURCES -type f -exec ln -sf {} $HOME/rpmbuild/SOURCES/ \;
+find /tmp/build/SOURCES -type f -o -type l -exec ln -sf {} $HOME/rpmbuild/SOURCES/ \;
+
+
 
 ## download sources
 for spec in $HOME/rpmbuild/SPECS/*.spec; do
@@ -29,6 +36,7 @@ rpmbuild -ba $HOME/rpmbuild/SPECS/*.spec
 
 ## copy built files out of the vagrant/docker environment
 ## skip if you are doing this manually
-if [ -f /.dockerenv ] || [ -f /.doing_the_vagrant ]; then
-    sudo cp -rf $HOME/rpmbuild/RPMS $HOME/rpmbuild/SRPMS /tmp/artifacts/
+if [ -f /.dockerenv ]; then
+    sudo mkdir -p /tmp/build/artifacts
+    sudo cp -rf $HOME/rpmbuild/RPMS $HOME/rpmbuild/SRPMS /tmp/build/artifacts/
 fi
